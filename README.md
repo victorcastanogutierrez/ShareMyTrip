@@ -48,5 +48,5 @@ Util classes for types treatment
 
 #Authors
 
-. Víctor Castaño Gutiérrez
-. Adrián Jiménez Villareal
+1. Víctor Castaño Gutiérrez
+2. Adrián Jiménez Villareal
