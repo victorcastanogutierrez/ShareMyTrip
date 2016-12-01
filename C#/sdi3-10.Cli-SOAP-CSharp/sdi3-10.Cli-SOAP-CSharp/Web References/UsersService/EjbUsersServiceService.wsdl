@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.business.sdi.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EjbUsersServiceService" targetNamespace="http://impl.business.sdi.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://impl.business.sdi.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="cancelUser" type="tns:cancelUser" />
+      <xs:element name="cancelUserResponse" type="tns:cancelUserResponse" />
+      <xs:element name="findAll" type="tns:findAll" />
+      <xs:element name="findAllActive" type="tns:findAllActive" />
+      <xs:element name="findAllActiveResponse" type="tns:findAllActiveResponse" />
+      <xs:element name="findAllResponse" type="tns:findAllResponse" />
+      <xs:element name="findByEmail" type="tns:findByEmail" />
+      <xs:element name="findByEmailResponse" type="tns:findByEmailResponse" />
+      <xs:element name="findById" type="tns:findById" />
+      <xs:element name="findByIdResponse" type="tns:findByIdResponse" />
+      <xs:element name="findByLogin" type="tns:findByLogin" />
+      <xs:element name="findByLoginResponse" type="tns:findByLoginResponse" />
+      <xs:element name="listByAcceptedAndPending" type="tns:listByAcceptedAndPending" />
+      <xs:element name="listByAcceptedAndPendingResponse" type="tns:listByAcceptedAndPendingResponse" />
+      <xs:element name="listByTripAndSeatStatus" type="tns:listByTripAndSeatStatus" />
+      <xs:element name="listByTripAndSeatStatusResponse" type="tns:listByTripAndSeatStatusResponse" />
+      <xs:element name="register" type="tns:register" />
+      <xs:element name="registerResponse" type="tns:registerResponse" />
+      <xs:element name="user" type="tns:user" />
+      <xs:complexType name="findById">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByIdResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="user">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="id" type="xs:long" />
+          <xs:element minOccurs="0" name="login" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element minOccurs="0" name="state" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="tns:userStatus" />
+          <xs:element minOccurs="0" name="surname" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAll">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findAllResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAllActive">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findAllActiveResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelUserResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findByLogin">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByLoginResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="listByAcceptedAndPending">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="listByAcceptedAndPendingResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="register">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="registerResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="listByTripAndSeatStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+          <xs:element minOccurs="0" name="arg1" type="tns:seatStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="listByTripAndSeatStatusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByEmail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByEmailResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="userStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ACTIVE" />
+          <xs:enumeration value="CANCELLED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="seatStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ACCEPTED" />
+          <xs:enumeration value="EXCLUDED" />
+          <xs:enumeration value="NO_SEAT" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="cancelUser">
+    <wsdl:part name="parameters" element="tns:cancelUser" />
+  </wsdl:message>
+  <wsdl:message name="cancelUserResponse">
+    <wsdl:part name="parameters" element="tns:cancelUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="findByLogin">
+    <wsdl:part name="parameters" element="tns:findByLogin" />
+  </wsdl:message>
+  <wsdl:message name="findByEmailResponse">
+    <wsdl:part name="parameters" element="tns:findByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="findByIdResponse">
+    <wsdl:part name="parameters" element="tns:findByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAllActive">
+    <wsdl:part name="parameters" element="tns:findAllActive" />
+  </wsdl:message>
+  <wsdl:message name="findAll">
+    <wsdl:part name="parameters" element="tns:findAll" />
+  </wsdl:message>
+  <wsdl:message name="listByTripAndSeatStatusResponse">
+    <wsdl:part name="parameters" element="tns:listByTripAndSeatStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="findByLoginResponse">
+    <wsdl:part name="parameters" element="tns:findByLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAllResponse">
+    <wsdl:part name="parameters" element="tns:findAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="registerResponse">
+    <wsdl:part name="parameters" element="tns:registerResponse" />
+  </wsdl:message>
+  <wsdl:message name="register">
+    <wsdl:part name="parameters" element="tns:register" />
+  </wsdl:message>
+  <wsdl:message name="findById">
+    <wsdl:part name="parameters" element="tns:findById" />
+  </wsdl:message>
+  <wsdl:message name="listByAcceptedAndPendingResponse">
+    <wsdl:part name="parameters" element="tns:listByAcceptedAndPendingResponse" />
+  </wsdl:message>
+  <wsdl:message name="findByEmail">
+    <wsdl:part name="parameters" element="tns:findByEmail" />
+  </wsdl:message>
+  <wsdl:message name="listByTripAndSeatStatus">
+    <wsdl:part name="parameters" element="tns:listByTripAndSeatStatus" />
+  </wsdl:message>
+  <wsdl:message name="findAllActiveResponse">
+    <wsdl:part name="parameters" element="tns:findAllActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="listByAcceptedAndPending">
+    <wsdl:part name="parameters" element="tns:listByAcceptedAndPending" />
+  </wsdl:message>
+  <wsdl:portType name="UsersService">
+    <wsdl:operation name="findById">
+      <wsdl:input name="findById" message="tns:findById" />
+      <wsdl:output name="findByIdResponse" message="tns:findByIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findAll">
+      <wsdl:input name="findAll" message="tns:findAll" />
+      <wsdl:output name="findAllResponse" message="tns:findAllResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findAllActive">
+      <wsdl:input name="findAllActive" message="tns:findAllActive" />
+      <wsdl:output name="findAllActiveResponse" message="tns:findAllActiveResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelUser">
+      <wsdl:input name="cancelUser" message="tns:cancelUser" />
+      <wsdl:output name="cancelUserResponse" message="tns:cancelUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findByLogin">
+      <wsdl:input name="findByLogin" message="tns:findByLogin" />
+      <wsdl:output name="findByLoginResponse" message="tns:findByLoginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="listByAcceptedAndPending">
+      <wsdl:input name="listByAcceptedAndPending" message="tns:listByAcceptedAndPending" />
+      <wsdl:output name="listByAcceptedAndPendingResponse" message="tns:listByAcceptedAndPendingResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <wsdl:input name="register" message="tns:register" />
+      <wsdl:output name="registerResponse" message="tns:registerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="listByTripAndSeatStatus">
+      <wsdl:input name="listByTripAndSeatStatus" message="tns:listByTripAndSeatStatus" />
+      <wsdl:output name="listByTripAndSeatStatusResponse" message="tns:listByTripAndSeatStatusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findByEmail">
+      <wsdl:input name="findByEmail" message="tns:findByEmail" />
+      <wsdl:output name="findByEmailResponse" message="tns:findByEmailResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EjbUsersServiceServiceSoapBinding" type="tns:UsersService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="findById">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findById">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findByIdResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAll">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findAll">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findAllResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllActive">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findAllActive">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findAllActiveResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="cancelUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findByLogin">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findByLogin">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findByLoginResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listByAcceptedAndPending">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="listByAcceptedAndPending">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="listByAcceptedAndPendingResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="register">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="registerResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listByTripAndSeatStatus">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="listByTripAndSeatStatus">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="listByTripAndSeatStatusResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findByEmail">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findByEmail">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findByEmailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EjbUsersServiceService">
+    <wsdl:port name="UsersServicePort" binding="tns:EjbUsersServiceServiceSoapBinding">
+      <soap:address location="http://DESKTOP-PGL18OV:8280/sdi3-10.EJB/UsersService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

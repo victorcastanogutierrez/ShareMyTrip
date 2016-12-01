@@ -1,0 +1,77 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template-user.xhtml">
+
+	<ui:define name="titulo">
+    #{msgs.tituloDatosViaje}
+  	</ui:define>
+
+	<ui:define name="cuerpo">
+		<p:messages id="messagesInfo" showDetail="true" autoUpdate="true" closable="true" />
+		<p:panel header="#{msgs.tituloDatosViaje}">
+			<p:panelGrid  columns="2" columnClasses="label,value" >
+				<h:outputText value="#{msgs.viajeDirSalida}" />
+				<h:outputText value="#{trip.departureaddress}" />
+				
+				<h:outputText value="#{msgs.tablaCiudadLlegada}" />
+				<h:outputText value="#{trip.arrivalcity}" />
+				
+				<h:outputText value="#{msgs.viajeDirDestino}" />
+				<h:outputText value="#{trip.arrivaladdress}" />
+				
+				<h:outputText value="#{msgs.tablaCiudadSalida}" />
+				<h:outputText value="#{trip.departurecity}" />
+				
+				<h:outputText value="#{msgs.tablaFechaLlegada}" />
+				<h:outputText value="#{trip.arrivalDate}"  >
+				    <f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+				</h:outputText>
+				
+				<h:outputText value="#{msgs.tablaFechaSalida}"/>
+				<h:outputText value="#{trip.departureDate}" >
+				    <f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+				</h:outputText>
+				
+				<h:outputText value="#{msgs.tablaFechaCierre}" />
+				<h:outputText value="#{trip.closingDate}" >
+				    <f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+				</h:outputText>
+				
+				<h:outputText value="#{msgs.tablaPlazasDisponibles}" />
+				<h:outputText value="#{trip.availablePax}" />
+				
+				<h:outputText value="#{msgs.tablaCosteEstimado}" />
+				<h:outputText value="#{trip.estimatedCost}">
+	                <f:convertNumber currencySymbol="€" type="currency"/>
+	            </h:outputText>
+				
+				<h:outputText value="#{msgs.viajeComentarios}" />
+				<h:outputText value="#{trip.comments}" />
+				
+				<h:outputText value="#{msgs.viajePromotor}" />
+				<h:outputText value="#{seats.promotor.name} #{seats.promotor.surname}" />
+			</p:panelGrid>	
+		</p:panel>
+		<p:panel header="#{msgs.tablaVerDatosPasajeros}">
+			<p:commandButton value="#{msgs.requestSeat}" id="btSolicitarPlaza"
+				actionListener="#{user.solicitarPlaza(trip.id)}" immediate="true">
+				<f:ajax render="@form" />
+			</p:commandButton>
+			<p:dataTable id="tablaPasajeros" var="vseat"
+				value="#{seats.pasajeros}" border="1">
+				
+				<p:column>
+					<f:facet name="header">#{msgs.campoNombre}</f:facet>#{vseat.name}</p:column>
+				<p:column>
+					<f:facet name="header">#{msgs.campoApellidos}</f:facet>#{vseat.surname}</p:column>
+				<p:column>
+					<f:facet name="header">#{msgs.campoEmail}</f:facet>#{vseat.email}</p:column>
+					
+					
+			</p:dataTable>
+		</p:panel>
+	</ui:define>
+</ui:composition>

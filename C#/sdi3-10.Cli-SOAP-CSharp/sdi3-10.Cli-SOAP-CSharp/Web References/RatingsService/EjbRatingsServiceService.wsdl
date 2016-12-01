@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.business.sdi.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EjbRatingsServiceService" targetNamespace="http://impl.business.sdi.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://impl.business.sdi.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="findAll" type="tns:findAll" />
+      <xs:element name="findAllResponse" type="tns:findAllResponse" />
+      <xs:element name="findByLastMonth" type="tns:findByLastMonth" />
+      <xs:element name="findByLastMonthResponse" type="tns:findByLastMonthResponse" />
+      <xs:element name="rating" type="tns:rating" />
+      <xs:element name="remove" type="tns:remove" />
+      <xs:element name="removeResponse" type="tns:removeResponse" />
+      <xs:complexType name="findAll">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findAllResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:rating" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rating">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="comment" type="xs:string" />
+          <xs:element minOccurs="0" name="id" type="xs:long" />
+          <xs:element minOccurs="0" name="seatAboutTripId" type="xs:long" />
+          <xs:element minOccurs="0" name="seatAboutUserId" type="xs:long" />
+          <xs:element minOccurs="0" name="seatFromTripId" type="xs:long" />
+          <xs:element minOccurs="0" name="seatFromUserId" type="xs:long" />
+          <xs:element minOccurs="0" name="value" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="remove">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="removeResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findByLastMonth">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findByLastMonthResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:rating" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findAllResponse">
+    <wsdl:part name="parameters" element="tns:findAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="findByLastMonth">
+    <wsdl:part name="parameters" element="tns:findByLastMonth" />
+  </wsdl:message>
+  <wsdl:message name="removeResponse">
+    <wsdl:part name="parameters" element="tns:removeResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAll">
+    <wsdl:part name="parameters" element="tns:findAll" />
+  </wsdl:message>
+  <wsdl:message name="findByLastMonthResponse">
+    <wsdl:part name="parameters" element="tns:findByLastMonthResponse" />
+  </wsdl:message>
+  <wsdl:message name="remove">
+    <wsdl:part name="parameters" element="tns:remove" />
+  </wsdl:message>
+  <wsdl:portType name="RatingsService">
+    <wsdl:operation name="findAll">
+      <wsdl:input name="findAll" message="tns:findAll" />
+      <wsdl:output name="findAllResponse" message="tns:findAllResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="remove">
+      <wsdl:input name="remove" message="tns:remove" />
+      <wsdl:output name="removeResponse" message="tns:removeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findByLastMonth">
+      <wsdl:input name="findByLastMonth" message="tns:findByLastMonth" />
+      <wsdl:output name="findByLastMonthResponse" message="tns:findByLastMonthResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EjbRatingsServiceServiceSoapBinding" type="tns:RatingsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="findAll">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findAll">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findAllResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="remove">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="remove">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="removeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findByLastMonth">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findByLastMonth">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findByLastMonthResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EjbRatingsServiceService">
+    <wsdl:port name="RatingsServicePort" binding="tns:EjbRatingsServiceServiceSoapBinding">
+      <soap:address location="http://DESKTOP-PGL18OV:8280/sdi3-10.EJB/RatingsService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

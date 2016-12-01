@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.business.sdi.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EjbSeatsServiceService" targetNamespace="http://impl.business.sdi.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://impl.business.sdi.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="cancel" type="tns:cancel" />
+      <xs:element name="cancelResponse" type="tns:cancelResponse" />
+      <xs:element name="exclude" type="tns:exclude" />
+      <xs:element name="excludeResponse" type="tns:excludeResponse" />
+      <xs:element name="findAdll" type="tns:findAdll" />
+      <xs:element name="findAdllResponse" type="tns:findAdllResponse" />
+      <xs:element name="findByTrip" type="tns:findByTrip" />
+      <xs:element name="findByTripResponse" type="tns:findByTripResponse" />
+      <xs:element name="findByUserId" type="tns:findByUserId" />
+      <xs:element name="findByUserIdResponse" type="tns:findByUserIdResponse" />
+      <xs:element name="save" type="tns:save" />
+      <xs:element name="saveResponse" type="tns:saveResponse" />
+      <xs:element name="seat" type="tns:seat" />
+      <xs:element name="updateNoSeat" type="tns:updateNoSeat" />
+      <xs:element name="updateNoSeatResponse" type="tns:updateNoSeatResponse" />
+      <xs:complexType name="exclude">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="excludeResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="cancel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+          <xs:element minOccurs="0" name="arg1" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findAdll">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findAdllResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:seat" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="seat">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="comment" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="tns:seatStatus" />
+          <xs:element minOccurs="0" name="tripId" type="xs:long" />
+          <xs:element minOccurs="0" name="userId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="save">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:seat" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="saveResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findByTrip">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByTripResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:seat" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateNoSeat">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+          <xs:element minOccurs="0" name="arg1" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateNoSeatResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findByUserId">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByUserIdResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:seat" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="seatStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ACCEPTED" />
+          <xs:enumeration value="EXCLUDED" />
+          <xs:enumeration value="NO_SEAT" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="exclude">
+    <wsdl:part name="parameters" element="tns:exclude" />
+  </wsdl:message>
+  <wsdl:message name="cancel">
+    <wsdl:part name="parameters" element="tns:cancel" />
+  </wsdl:message>
+  <wsdl:message name="findByUserIdResponse">
+    <wsdl:part name="parameters" element="tns:findByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAdll">
+    <wsdl:part name="parameters" element="tns:findAdll" />
+  </wsdl:message>
+  <wsdl:message name="updateNoSeatResponse">
+    <wsdl:part name="parameters" element="tns:updateNoSeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="save">
+    <wsdl:part name="parameters" element="tns:save" />
+  </wsdl:message>
+  <wsdl:message name="findByTripResponse">
+    <wsdl:part name="parameters" element="tns:findByTripResponse" />
+  </wsdl:message>
+  <wsdl:message name="excludeResponse">
+    <wsdl:part name="parameters" element="tns:excludeResponse" />
+  </wsdl:message>
+  <wsdl:message name="findByTrip">
+    <wsdl:part name="parameters" element="tns:findByTrip" />
+  </wsdl:message>
+  <wsdl:message name="findByUserId">
+    <wsdl:part name="parameters" element="tns:findByUserId" />
+  </wsdl:message>
+  <wsdl:message name="cancelResponse">
+    <wsdl:part name="parameters" element="tns:cancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAdllResponse">
+    <wsdl:part name="parameters" element="tns:findAdllResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveResponse">
+    <wsdl:part name="parameters" element="tns:saveResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateNoSeat">
+    <wsdl:part name="parameters" element="tns:updateNoSeat" />
+  </wsdl:message>
+  <wsdl:portType name="SeatsService">
+    <wsdl:operation name="exclude">
+      <wsdl:input name="exclude" message="tns:exclude" />
+      <wsdl:output name="excludeResponse" message="tns:excludeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cancel">
+      <wsdl:input name="cancel" message="tns:cancel" />
+      <wsdl:output name="cancelResponse" message="tns:cancelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findAdll">
+      <wsdl:input name="findAdll" message="tns:findAdll" />
+      <wsdl:output name="findAdllResponse" message="tns:findAdllResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="save">
+      <wsdl:input name="save" message="tns:save" />
+      <wsdl:output name="saveResponse" message="tns:saveResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findByTrip">
+      <wsdl:input name="findByTrip" message="tns:findByTrip" />
+      <wsdl:output name="findByTripResponse" message="tns:findByTripResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateNoSeat">
+      <wsdl:input name="updateNoSeat" message="tns:updateNoSeat" />
+      <wsdl:output name="updateNoSeatResponse" message="tns:updateNoSeatResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findByUserId">
+      <wsdl:input name="findByUserId" message="tns:findByUserId" />
+      <wsdl:output name="findByUserIdResponse" message="tns:findByUserIdResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EjbSeatsServiceServiceSoapBinding" type="tns:SeatsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="cancel">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="cancel">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="exclude">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="exclude">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="excludeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAdll">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findAdll">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findAdllResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="save">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="save">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="saveResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findByTrip">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findByTrip">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findByTripResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findByUserId">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findByUserId">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findByUserIdResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateNoSeat">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateNoSeat">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateNoSeatResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EjbSeatsServiceService">
+    <wsdl:port name="SeatsServicePort" binding="tns:EjbSeatsServiceServiceSoapBinding">
+      <soap:address location="http://DESKTOP-PGL18OV:8280/sdi3-10.EJB/SeatsService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

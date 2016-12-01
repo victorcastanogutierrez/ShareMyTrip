@@ -1,0 +1,199 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<p:messages id="messagesInfo" showDetail="true" autoUpdate="true" closable="true" />
+	
+	<p:panelGrid id="gridDatos" columns="2" cellpadding="5">
+		#{msgs.campoFormViajeCalle} #{msgs.campoSalida}:
+		<h:panelGroup>
+			<p:outputLabel for="calleSalida" />
+			<p:inputText id="calleSalida" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.departureaddress}" />
+			<p:message for="calleSalida" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajeCiudad} #{msgs.campoSalida}: 
+		<h:panelGroup>
+			<p:outputLabel for="ciudadSalida" />
+			<p:autoComplete id="ciudadSalida" dropdown="true"
+				completeMethod="#{autoCompleteCity.completeCity}" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.departurecity}" />
+			<p:message for="ciudadSalida" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajeProvincia} #{msgs.campoSalida}: 
+		<h:panelGroup>
+			<p:outputLabel for="provinciaSalida" />
+			<p:inputText id="provinciaSalida" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.departurestate}" />
+			<p:message for="provinciaSalida" />
+		</h:panelGroup>
+		
+		#{msgs.campoFormViajePais} #{msgs.campoSalida}: 
+		<h:panelGroup>
+			<p:outputLabel for="paisSalida" />
+			<p:inputText id="paisSalida" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.departurecountry}" />
+			<p:message for="paisSalida" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajeCodPost} #{msgs.campoSalida}: 
+		<h:panelGroup>
+			<p:outputLabel for="codpostSalida" />
+			<p:inputText id="codpostSalida" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.departurezipCode}" />
+			<p:message for="codpostSalida" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajeCX} #{msgs.campoSalida}: 
+		<h:panelGroup>
+			<p:inputText id="cxSalida" required="false"
+				value="#{trip.departurelat}" />
+			<p:message for="cxSalida" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajeCY} #{msgs.campoSalida}: 
+		<h:panelGroup>
+			<p:inputText id="cySalida" required="false"
+				value="#{trip.departurelon}" />
+			<p:message for="cySalida" />
+		</h:panelGroup>
+		
+		#{msgs.campoFormViajeHora} #{msgs.campoSalida}: 
+		<h:panelGroup>
+			<p:outputLabel for="fechaSalida" />
+			<p:calendar id="fechaSalida" pattern="dd/MM/yyyy HH:mm"
+				required="true" value="#{trip.departureDate}" showOn="button"
+				requiredMessage="#{msgs.campoFormViajeRequerido}" />
+			<p:message id="calendarMess" for="fechaSalida" />
+		</h:panelGroup>
+		
+		#{msgs.campoFormViajeCalle} #{msgs.campoDestino}: 
+		<h:panelGroup>
+			<p:outputLabel for="calleDestino" />
+			<p:inputText id="calleDestino" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.arrivaladdress}" />
+			<p:message for="calleDestino" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajeCiudad} #{msgs.campoDestino}: 
+		<h:panelGroup>
+			<p:outputLabel for="ciudadDestino" />
+			<p:autoComplete id="ciudadDestino" dropdown="true"
+				completeMethod="#{autoCompleteCity.completeCity}" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.arrivalcity}" />
+			<p:message for="ciudadDestino" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajeProvincia} #{msgs.campoDestino}: 
+		<h:panelGroup>
+			<p:outputLabel for="provinciaDestino" />
+			<p:inputText id="provinciaDestino" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.arrivalstate}" />
+			<p:message for="provinciaSalida" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajePais} #{msgs.campoDestino}: 
+		<h:panelGroup>
+			<p:outputLabel for="paisDestino" />
+			<p:inputText id="paisDestino" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.arrivalcountry}" />
+			<p:message for="paisDestino" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajeCodPost} #{msgs.campoDestino}: 
+		<h:panelGroup>
+			<p:outputLabel for="codpostDestino" />
+			<p:inputText id="codpostDestino" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.arrivalzipCode}" />
+			<p:message for="codpostDestino" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajeCX} #{msgs.campoDestino}: 
+		<h:panelGroup>
+			<p:inputText id="cxDestino" required="false"
+				value="#{trip.arrivallat}" />
+			<p:message for="cxDestino" />
+		</h:panelGroup>
+	
+		#{msgs.campoFormViajeCY} #{msgs.campoDestino}: 
+		<h:panelGroup>
+			<p:inputText id="cyDestino" required="false"
+				value="#{trip.arrivallon}" />
+			<p:message for="cyDestino" />
+		</h:panelGroup>
+		
+		#{msgs.campoFormViajeHora} #{msgs.campoDestino}: 
+		<h:panelGroup>
+			<p:outputLabel for="fechaDestino" />
+			<p:calendar id="fechaDestino" pattern="dd/MM/yyyy HH:mm"
+				requiredMessage="#{msgs.campoFormViajeRequerido}" required="true"
+				value="#{trip.arrivalDate}" showOn="button" />
+			<p:message for="fechaDestino" />
+		</h:panelGroup>
+		
+		#{msgs.tablaFechaCierre}: 
+		<h:panelGroup>
+			<p:outputLabel for="fechaCierre" />
+			<p:calendar id="fechaCierre" pattern="dd/MM/yyyy HH:mm:ss"
+				requiredMessage="#{msgs.campoFormViajeRequerido}" required="true"
+				value="#{trip.closingDate}" showOn="button" />
+			<p:message for="fechaCierre" />
+		</h:panelGroup>
+		
+		#{msgs.tablaCosteEstimado}: 
+		<h:panelGroup>
+			<p:outputLabel for="coste" />
+			<p:inputText id="coste" decimalSeparator="," thousandSeparator="."
+				required="true" value="#{trip.estimatedCost}"
+				requiredMessage="#{msgs.campoFormViajeRequerido}">
+				<f:convertNumber type="number" integerOnly="true" />
+			</p:inputText>
+			<p:message for="coste" />
+		</h:panelGroup>
+		
+		#{msgs.viajeComentarios}: 
+		<h:panelGroup>
+			<p:outputLabel for="comentarios" />
+			<p:inputText id="comentarios" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}"
+				value="#{trip.comments}" />
+			<p:message for="comentarios" />
+		</h:panelGroup>
+		
+		#{msgs.campoPlazasTotales}: 
+		<h:panelGroup>
+			<p:outputLabel for="plazastotales" />
+			<p:spinner id="plazastotales" min="0" stepFactor="1"
+				value="#{trip.maxPax}" />
+		</h:panelGroup>
+		
+		#{msgs.campoPlazasDisponibles}: 
+		<h:panelGroup>
+			<p:outputLabel for="plazasDisponibles" />
+			<p:spinner id="plazasDisponibles" min="0" stepFactor="1"
+				value="#{trip.availablePax}" />
+		</h:panelGroup>
+
+	</p:panelGrid>
+	
+	<p:commandButton id="botonRegistrar" value="#{msgs.login_form_button_send}"
+		actionListener="#{trip.salva()}" update="gridDatos" process="@form"
+		action="#{login.cargarViajesRelaccionados}">
+	</p:commandButton> <br/>
+
+
+</ui:composition>

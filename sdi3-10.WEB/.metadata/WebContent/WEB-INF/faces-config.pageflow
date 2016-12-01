@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14246831526460" configfile="/sdi2-10WEB/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf14592471648763" referenceLink="//@navigationRule.0/@fromViewId|" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="altaTripForm.xhtml" x="122" y="562" id="pf145924716487613" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" path="/altaTripForm.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="122" y="946" id="pf145924716487614" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" path="/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="loginForm.xhtml" x="122" y="1330" id="pf145924716487616" referenceLink="//@navigationRule.3/@fromViewId|" path="/loginForm.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="dataTrip.xhtml" x="122" y="1714" id="pf145924716487622" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" path="/dataTrip.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf146117911967812" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf146117911967813 pf146117911967814 pf14613172096400" inlinks="pf146117911967816 pf146117911967817 pf14613172096401" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="registerForm.xhtml" id="pf146117911967918" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf146117911967919 pf146117911967816 pf146117911967920" inlinks="pf146117911967813 pf146117911967919 pf146117911967921" path="/registerForm.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listado.xhtml" id="pf146117911967922" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf146117911967921 pf146117911967817" inlinks="pf146117911967814 pf146117911967920" path="/listado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/*" id="pf14613172096402" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf14613172096401 pf14613172096403 pf14613172096404 pf14613172096405 pf14613172096406 pf14613172096407 pf14613172096408 pf14613172096409 pf146131720964010 pf146131720964011 pf146131720964012" path="/private/*"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/listadoPendientes.xhtml" id="pf146131720964013" referenceLink="//@navigationRule.4/@navigationCase.5/@toViewId|" inlinks="pf14613172096400 pf14613172096405 pf14613172096408" path="/private/listadoPendientes.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/listado.xhtml" id="pf146131720964014" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf14613172096403" path="/private/listado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/altaTripForm.xhtml" id="pf146131720964015" referenceLink="//@navigationRule.4/@navigationCase.3/@toViewId|" inlinks="pf14613172096404 pf14613172096406" path="/private/altaTripForm.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/dataTrip.xhtml" id="pf146131720964016" referenceLink="//@navigationRule.4/@navigationCase.4/@toViewId|" inlinks="pf14613172096407" path="/private/dataTrip.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/adminViaje.xhtml" id="pf146131720964017" referenceLink="//@navigationRule.4/@navigationCase.8/@toViewId|" inlinks="pf14613172096409 pf146131720964010 pf146131720964011" path="/private/adminViaje.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="private/editarViaje.xhtml" id="pf146131720964018" referenceLink="//@navigationRule.4/@navigationCase.9/@toViewId|" inlinks="pf146131720964012" path="/private/editarViaje.xhtml"/>
+  <links id="pf146117911967813" target="pf146117911967918" source="pf146117911967812" outcome="registro"/>
+  <links id="pf146117911967814" target="pf146117911967922" source="pf146117911967812" outcome="exito" fromaction="#{tripController.listado}"/>
+  <links id="pf146117911967919" target="pf146117911967918" source="pf146117911967918" outcome="registro"/>
+  <links id="pf146117911967816" target="pf146117911967812" source="pf146117911967918" outcome="login"/>
+  <links id="pf146117911967920" target="pf146117911967922" source="pf146117911967918" outcome="exito" fromaction="#{tripController.listado}"/>
+  <links id="pf146117911967921" target="pf146117911967918" source="pf146117911967922" outcome="registro"/>
+  <links id="pf146117911967817" target="pf146117911967812" source="pf146117911967922" outcome="login"/>
+  <links id="pf14613172096401" target="pf146117911967812" source="pf14613172096402" outcome="cierreSesion" fromaction="#{settings.logout}"/>
+  <links id="pf14613172096400" target="pf146131720964013" source="pf146117911967812" outcome="exito" fromaction="#{login.verify}"/>
+  <links id="pf14613172096403" target="pf146131720964014" source="pf14613172096402" outcome="exito" fromaction="#{tripController.listado}"/>
+  <links id="pf14613172096404" target="pf146131720964015" source="pf14613172096402" outcome="nuevoViaje"/>
+  <links id="pf14613172096405" target="pf146131720964013" source="pf14613172096402" outcome="exito" fromaction="#{trip.salva}"/>
+  <links id="pf14613172096406" target="pf146131720964015" source="pf14613172096402" outcome="error" fromaction="#{trip.salva}"/>
+  <links id="pf14613172096407" target="pf146131720964016" source="pf14613172096402" outcome="exito" fromaction="#{seats.listadoPasajeros}"/>
+  <links id="pf14613172096408" target="pf146131720964013" source="pf14613172096402" outcome="exito" fromaction="#{login.cargarViajesRelaccionados}"/>
+  <links id="pf14613172096409" target="pf146131720964017" source="pf14613172096402" outcome="exito" fromaction="#{tripAdmin.listadoUsuarios}"/>
+  <links id="pf146131720964010" target="pf146131720964017" source="pf14613172096402" fromaction="#{tripAdmin.aceptarPasajero}"/>
+  <links id="pf146131720964011" target="pf146131720964017" source="pf14613172096402" fromaction="#{tripAdmin.excluirPasajero}"/>
+  <links id="pf146131720964012" target="pf146131720964018" source="pf14613172096402" outcome="editarViaje"/>
+</pageflow:Pageflow>

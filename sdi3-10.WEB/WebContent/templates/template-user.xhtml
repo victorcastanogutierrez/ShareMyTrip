@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<f:view locale="#{settings.locale}">
+	<h:head>
+		<title>#{msgs.tituloHead}</title>
+	</h:head>
+	<h:body>
+		<h:form id="form-cabecera">
+			<center>
+				<h1>#{msgs.tituloAplicacion1}</h1>
+			</center>
+			<br />
+			<br />
+			<table border="5" align="center">
+				<tr>
+					<th class="title"><ui:insert name="titulo">#{msgs.tituloDefectoCabecera}</ui:insert>
+					</th>
+				</tr>
+			</table>
+			<p:menubar>
+				<p:menuitem id="listadoViajesPropios"
+					value="#{msgs.tituloListadoPropios}" icon="ui-icon-script"
+					action="#{login.cargarViajesRelaccionados}" />
+				<p:menuitem id="viajesDisponibles" value="#{msgs.tituloTablaListado}" icon="ui-icon-script"
+					action="#{tripController.listado}" />
+				<p:menuitem id="registroViaje" value="#{msgs.tituloTripForm}"
+					icon="ui-icon-plus" action="nuevoViaje" />
+				<p:menuitem value="#{msgs.cerrarSesion}" style="float:right"
+					action="#{settings.logout}" icon="ui-icon-close" />
+				<p:submenu id="submenuIdioma" style="float:right" label="#{msgs.textoIdioma}"
+					icon="ui-icon-document">
+					<p:menuitem id="idiomaSpa" value="#{msgs.enlaceIdiomaES}"
+						actionListener="#{settings.setSpanish}" update="@all" />
+					<p:menuitem id="idiomaEng" value="#{msgs.enlaceIdiomaEN}"
+						actionListener="#{settings.setEnglish}" update="@all" />
+				</p:submenu>
+
+			</p:menubar>
+		</h:form>
+		<h:form id="form-cuerpo">
+			<ui:insert name="cuerpo">#{msgs.tituloDefectoCuerpo}</ui:insert>
+		</h:form>
+
+	</h:body>
+</f:view>
+</html>

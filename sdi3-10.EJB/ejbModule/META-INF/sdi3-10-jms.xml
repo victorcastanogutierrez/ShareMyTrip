@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messaging-deployment xmlns="urn:jboss:messaging-deployment:1.0">
+	<hornetq-server>
+		<jms-destinations>
+			<jms-queue name="TripSenderQueue">
+				<entry name="queue/TripSenderQueue" />
+				<entry name="java:jboss/exported/jms/queue/TripSenderQueue" />
+				<durable>true</durable>
+			</jms-queue>
+			<jms-queue name="LogAdminQueue">
+				<entry name="queue/LogAdminQueue" />
+				<entry name="java:jboss/exported/jms/queue/LogAdminQueue" />
+				<durable>true</durable>
+			</jms-queue>
+			<jms-topic name="FilteredTripQueue">
+				<entry name="topic/FilteredTripQueue" />
+				<entry name="java:jboss/exported/jms/topic/FilteredTripQueue" />
+			</jms-topic>
+		</jms-destinations>
+	</hornetq-server>
+</messaging-deployment>

@@ -1,0 +1,114 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<p:growl id="growl" showDetail="true" sticky="true" />
+
+	<p:panel header="#{msgs.tituloTablaListado}">
+		<p:dataTable id="tablaListadoPendientes" var="vviaje"
+			value="#{user.viajes}" border="1" paginator="true" rows="10"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15,20" sortMode="multiple"
+			selection="#{tripController.viajesSeleccionados}"
+			rowKey="#{vviaje.id}" emptyMessage="#{msgs.tablaVacia}"
+			filteredValue="#{tripFilter.filteredViajes}"
+			disabledSelection="#{vviaje.tripStatus != 'PROMOTER'}"
+			widgetVar="tablaListadoPendientes">
+
+			<p:column selectionMode="multiple"
+				style="width:16px;text-align:center" />
+
+			<f:facet name="header">
+				<p:outputPanel style="float: left">
+					<p:commandButton id="btCancelarViajesSel"
+						icon="ui-icon-arrowreturn-1-s" value="#{msgs.cancelarViaje}"
+						action="#{tripController.borrarViajesSel}"
+						update="tablaListadoPendientes"
+						oncomplete="PF('tablaListadoPendientes').unselectAllRows();">
+					</p:commandButton>
+				</p:outputPanel>
+			</f:facet>
+
+			<p:column id="ciudadOrigen" sortBy="#{vviaje.departure.city}"
+				filterBy="#{vviaje.departure.city}" filterMatchMode="contains">
+				<f:facet name="header">#{msgs.tablaCiudadSalida}</f:facet>#{vviaje.departure.city}</p:column>
+
+			<p:column id="ciudadDestino" sortBy="#{vviaje.destination.city}"
+				filterBy="#{vviaje.destination.city}" filterMatchMode="contains">
+				<f:facet name="header">#{msgs.tablaCiudadLlegada}</f:facet>#{vviaje.destination.city}</p:column>
+
+			<p:column id="fechaSalida" sortBy="#{vviaje.departureDate}"
+				filterBy="#{vviaje.departureDate}"
+				filterFunction="#{tripFilter.filterByDate}">
+				<f:facet name="header">#{msgs.tablaFechaSalida}</f:facet>
+				<h:outputText value="#{vviaje.departureDate}">
+					<f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+				</h:outputText>
+			</p:column>
+
+			<p:column id="fechaLlegada" sortBy="#{vviaje.arrivalDate}"
+				filterBy="#{vviaje.arrivalDate}"
+				filterFunction="#{tripFilter.filterByDate}">
+				<f:facet name="header">#{msgs.tablaFechaLlegada}</f:facet>
+				<h:outputText value="#{vviaje.arrivalDate}">
+					<f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+				</h:outputText>
+			</p:column>
+
+			<p:column id="fechaCierre" sortBy="#{vviaje.closingDate}"
+				filterBy="#{vviaje.closingDate}"
+				filterFunction="#{tripFilter.filterByDate}">
+				<f:facet name="header">#{msgs.tablaFechaCierre}</f:facet>
+				<h:outputText value="#{vviaje.closingDate}">
+					<f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+				</h:outputText>
+			</p:column>
+
+			<p:column id="costeEstimado" sortBy="#{vviaje.estimatedCost}"
+				filterBy="#{vviaje.estimatedCost}"
+				filterFunction="#{tripFilter.filterByCost}">
+				<f:facet name="header">#{msgs.tablaCosteEstimado}</f:facet>
+				<h:outputText value="#{vviaje.estimatedCost}">
+					<f:convertNumber currencySymbol="€" type="currency" />
+				</h:outputText>
+			</p:column>
+
+			<p:column id="plazasDisponibles" sortBy="#{vviaje.maxPax}"
+				filterBy="#{vviaje.maxPax}"
+				filterFunction="#{tripFilter.filterByPax}">
+				<f:facet name="header">#{msgs.tablaPlazasDisponibles}</f:facet>#{vviaje.availablePax}</p:column>
+
+			<p:column sortBy="#{vviaje.tripStatus}"
+				filterBy="#{vviaje.tripStatus}" filterMatchMode="contains">
+				<f:facet name="header">#{msgs.estadoViaje}</f:facet>#{vviaje.tripStatus}</p:column>
+
+			<p:column>
+				<f:facet name="header">#{msgs.opcionesViaje}</f:facet>
+				<ui:fragment rendered="#{vviaje.tripStatus eq 'PROMOTER'}">
+					<p:commandLink id="adminPasajeros" action="#{tripAdmin.listadoUsuarios}" type="submit"
+						value="#{msgs.administrarPasajeros}"
+						actionListener="#{tripAdmin.setDto(vviaje)}" immediate="true" />
+					<br></br>
+					<p:commandLink action="editarViaje" type="submit"
+						value="#{msgs.editarViaje}" id="editarViajebt"
+						actionListener="#{trip.setTrip(vviaje)}" immediate="true" />
+				</ui:fragment>
+
+				<ui:fragment rendered="#{vviaje.tripStatus eq 'PENDING'}">
+					<p:commandButton id="cancelarAsistenciaPendiente"  icon="ui-icon-close"
+						value="#{msgs.cancelarSolicitud}"
+						action="#{user.cancelarApplicant(vviaje.id)}"
+						update="tablaListadoPendientes :form-cuerpo:growl" />
+				</ui:fragment>
+
+				<ui:fragment rendered="#{vviaje.tripStatus eq 'ACCEPTED'}">
+					<p:commandButton id="cancelarAsistenciaAceptado" value="#{msgs.cancelarSeat}"
+						action="#{user.cancelarSeat(vviaje.id)}"
+						update="tablaListadoPendientes :form-cuerpo:growl" />
+				</ui:fragment>
+			</p:column>
+		</p:dataTable>
+	</p:panel>
+</ui:composition>

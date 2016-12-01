@@ -1,0 +1,96 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template-user.xhtml">
+
+	<ui:define name="titulo">
+    #{msgs.tituloDatosViaje}
+  	</ui:define>
+
+	<ui:define name="cuerpo">
+		<p:panel header="#{msgs.tituloDatosViaje}">
+			<p:panelGrid id="datos"  columns="2" columnClasses="label,value" >
+				<h:outputText value="#{msgs.viajeDirSalida}" />
+				<h:outputText value="#{tripAdmin.dto.departure.address}" />
+				
+				<h:outputText value="#{msgs.tablaCiudadLlegada}" />
+				<h:outputText value="#{tripAdmin.dto.destination.city}" />
+				
+				<h:outputText value="#{msgs.viajeDirDestino}" />
+				<h:outputText value="#{tripAdmin.dto.destination.address}" />
+				
+				<h:outputText value="#{msgs.tablaCiudadSalida}" />
+				<h:outputText value="#{tripAdmin.dto.departure.city}" />
+				
+				<h:outputText value="#{msgs.tablaFechaLlegada}" />
+				<h:outputText value="#{tripAdmin.dto.arrivalDate}"  >
+				    <f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+				</h:outputText>
+				
+				<h:outputText value="#{msgs.tablaFechaSalida}"/>
+				<h:outputText value="#{tripAdmin.dto.departureDate}" >
+				    <f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+				</h:outputText>
+				
+				<h:outputText value="#{msgs.tablaFechaCierre}" />
+				<h:outputText value="#{tripAdmin.dto.closingDate}" >
+				    <f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+				</h:outputText>
+				
+				<h:outputText value="#{msgs.tablaPlazasDisponibles}" />
+				<h:outputText id="avalible" value="#{tripAdmin.dto.availablePax}" />
+				
+				<h:outputText value="#{msgs.tablaCosteEstimado}" />
+				<h:outputText value="#{tripAdmin.dto.estimatedCost}">
+	                <f:convertNumber currencySymbol="€" type="currency"/>
+	            </h:outputText>
+				
+				<h:outputText value="#{msgs.viajeComentarios}" />
+				<h:outputText value="#{tripAdmin.dto.comments}" />
+				
+				<h:outputText value="#{msgs.viajePromotor}" />
+				<h:outputText value="#{tripAdmin.promotor.name} #{confirmUser.promotor.surname}" />
+				
+				
+				
+			</p:panelGrid>	
+		</p:panel>
+		<p:panel header="#{msgs.tablaVerDatosPasajeros}">
+			<p:dataTable id="tablaPasajeros" var="vseat"
+				value="#{tripAdmin.pasajeros}" border="1">
+				
+				<p:column>
+					<f:facet name="header">#{msgs.campoNombre}</f:facet>#{vseat.name}</p:column>
+				<p:column>
+					<f:facet name="header">#{msgs.campoApellidos}</f:facet>#{vseat.surname}</p:column>
+				<p:column>
+					<f:facet name="header">#{msgs.campoEmail}</f:facet>#{vseat.email}</p:column>
+				<p:column>
+					<f:facet name="header">#{msgs.estadoUsuario}</f:facet>#{vseat.state}</p:column>
+				<p:column>
+					<f:facet name="header">#{msgs.opcionesViaje}</f:facet>
+					<ui:fragment rendered="#{vseat.state eq 'PENDING'}">
+					<p:commandButton icon="icon-trash"
+							value="#{msgs.aceptarPasajero}" action="#{tripAdmin.aceptarPasajero(vseat.id)}"
+							update="tablaPasajeros">
+						</p:commandButton>
+					<p:commandButton icon="icon-trash"
+							value="#{msgs.excluirPasajero}" action="#{tripAdmin.excluirPasajeroPendiente(vseat.id)}"
+							update="tablaPasajeros">
+						</p:commandButton>
+					</ui:fragment>
+					<ui:fragment rendered="#{vseat.state eq 'ACCEPTED' and vseat.id ne tripAdmin.dto.promoterId}">
+						<p:commandButton id="excluirAceptado" icon="icon-trash"
+							value="#{msgs.excluirPasajero}" action="#{tripAdmin.excluirPasajero(vseat.id)}"
+							update="tablaPasajeros :form-cuerpo:datos">
+						</p:commandButton>
+					</ui:fragment>
+
+				</p:column>	
+					
+			</p:dataTable>
+		</p:panel>
+	</ui:define>
+</ui:composition>

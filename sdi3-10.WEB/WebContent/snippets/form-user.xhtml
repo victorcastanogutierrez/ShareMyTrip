@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<p:panelGrid id="Grid" columns="2" cellpadding="5">
+  #{msgs.register_form_name} 
+  <h:panelGroup>
+			<p:inputText value="#{user.name}" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}" id="nombre">
+			</p:inputText>
+			<p:message for="nombre" />
+		</h:panelGroup>
+  
+  #{msgs.register_form_surname} 
+  <h:panelGroup>
+			<p:inputText value="#{user.surname}" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}" id="apellidos">
+			</p:inputText>
+			<p:message for="apellidos" />
+		</h:panelGroup>
+  
+  #{msgs.register_form_login}
+  <h:panelGroup>
+			<p:inputText value="#{user.login}" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}" id="login">
+				<f:validator validatorId="loginValidator" />
+			</p:inputText>
+			<p:message for="login" />
+		</h:panelGroup>  
+  
+  #{msgs.register_email}
+  <h:panelGroup>
+			<p:inputText value="#{user.email}" required="true"
+				requiredMessage="#{msgs.campoFormViajeRequerido}" id="correo">
+				<f:validateRegex pattern=".+@.+\.[a-z]+" />
+				<f:validator validatorId="emailValidator" />
+			</p:inputText>
+			<p:message for="correo" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLabel for="pwd1" value="#{msgs.password1}" />
+			<p:password id="pwd1" value="#{user.password}" match="pwd2"
+				required="true" />
+
+			<h:outputLabel for="pwd2" value="#{msgs.password2}" />
+			<p:password id="pwd2" value="#{user.password2}" required="true" />
+		</h:panelGroup>
+		<p:commandButton id="boton" value="#{msgs.register_saveButton}"
+			action="#{user.registraUsuario}" update="Grid" process="@form">
+		</p:commandButton>
+	</p:panelGrid>
+</ui:composition>

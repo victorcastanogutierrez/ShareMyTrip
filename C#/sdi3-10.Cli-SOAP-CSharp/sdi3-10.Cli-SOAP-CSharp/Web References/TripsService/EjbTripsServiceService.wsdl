@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.business.sdi.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EjbTripsServiceService" targetNamespace="http://impl.business.sdi.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://impl.business.sdi.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="findAllUserTrip" type="tns:findAllUserTrip" />
+      <xs:element name="findAllUserTripResponse" type="tns:findAllUserTripResponse" />
+      <xs:element name="findById" type="tns:findById" />
+      <xs:element name="findByIdResponse" type="tns:findByIdResponse" />
+      <xs:element name="findByPromoter" type="tns:findByPromoter" />
+      <xs:element name="findByPromoterAndOpen" type="tns:findByPromoterAndOpen" />
+      <xs:element name="findByPromoterAndOpenResponse" type="tns:findByPromoterAndOpenResponse" />
+      <xs:element name="findByPromoterResponse" type="tns:findByPromoterResponse" />
+      <xs:element name="findPromoterOrParticipated" type="tns:findPromoterOrParticipated" />
+      <xs:element name="findPromoterOrParticipatedResponse" type="tns:findPromoterOrParticipatedResponse" />
+      <xs:element name="findToClose" type="tns:findToClose" />
+      <xs:element name="findToCloseResponse" type="tns:findToCloseResponse" />
+      <xs:element name="getAvailableTrips" type="tns:getAvailableTrips" />
+      <xs:element name="getAvailableTripsResponse" type="tns:getAvailableTripsResponse" />
+      <xs:element name="listadoDTO" type="tns:listadoDTO" />
+      <xs:element name="registerTrip" type="tns:registerTrip" />
+      <xs:element name="registerTripResponse" type="tns:registerTripResponse" />
+      <xs:element name="trip" type="tns:trip" />
+      <xs:element name="update" type="tns:update" />
+      <xs:element name="updateResponse" type="tns:updateResponse" />
+      <xs:element name="viajesPendientes" type="tns:viajesPendientes" />
+      <xs:element name="viajesPendientesResponse" type="tns:viajesPendientesResponse" />
+      <xs:complexType name="findPromoterOrParticipated">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findPromoterOrParticipatedResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:listadoDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="listadoDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="viajes" type="tns:trip" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="viajesPromoter" type="tns:trip" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="viajesSeat" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="trip">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arrivalDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="availablePax" type="xs:int" />
+          <xs:element minOccurs="0" name="closingDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="comments" type="xs:string" />
+          <xs:element minOccurs="0" name="departure" type="tns:addressPoint" />
+          <xs:element minOccurs="0" name="departureDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="destination" type="tns:addressPoint" />
+          <xs:element minOccurs="0" name="estimatedCost" type="xs:double" />
+          <xs:element minOccurs="0" name="id" type="xs:long" />
+          <xs:element minOccurs="0" name="maxPax" type="xs:int" />
+          <xs:element minOccurs="0" name="promoterId" type="xs:long" />
+          <xs:element minOccurs="0" name="status" type="tns:tripStatus" />
+          <xs:element minOccurs="0" name="tripStatus" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addressPoint">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findById">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByIdResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByPromoterAndOpen">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByPromoterAndOpenResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="registerTrip">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="registerTripResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAvailableTrips">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="getAvailableTripsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="viajesPendientes">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="viajesPendientesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAllUserTrip">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAllUserTripResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findToClose">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="findToCloseResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByPromoter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findByPromoterResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="update">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:trip" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:simpleType name="tripStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OPEN" />
+          <xs:enumeration value="CLOSED" />
+          <xs:enumeration value="CANCELLED" />
+          <xs:enumeration value="DONE" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="Exception" type="tns:Exception" />
+      <xs:complexType name="Exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findByPromoterResponse">
+    <wsdl:part name="parameters" element="tns:findByPromoterResponse" />
+  </wsdl:message>
+  <wsdl:message name="registerTripResponse">
+    <wsdl:part name="parameters" element="tns:registerTripResponse" />
+  </wsdl:message>
+  <wsdl:message name="findByPromoterAndOpen">
+    <wsdl:part name="parameters" element="tns:findByPromoterAndOpen" />
+  </wsdl:message>
+  <wsdl:message name="findPromoterOrParticipatedResponse">
+    <wsdl:part name="parameters" element="tns:findPromoterOrParticipatedResponse" />
+  </wsdl:message>
+  <wsdl:message name="findByIdResponse">
+    <wsdl:part name="parameters" element="tns:findByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAvailableTrips">
+    <wsdl:part name="parameters" element="tns:getAvailableTrips" />
+  </wsdl:message>
+  <wsdl:message name="update">
+    <wsdl:part name="parameters" element="tns:update" />
+  </wsdl:message>
+  <wsdl:message name="findByPromoter">
+    <wsdl:part name="parameters" element="tns:findByPromoter" />
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part name="Exception" element="tns:Exception" />
+  </wsdl:message>
+  <wsdl:message name="getAvailableTripsResponse">
+    <wsdl:part name="parameters" element="tns:getAvailableTripsResponse" />
+  </wsdl:message>
+  <wsdl:message name="findToCloseResponse">
+    <wsdl:part name="parameters" element="tns:findToCloseResponse" />
+  </wsdl:message>
+  <wsdl:message name="registerTrip">
+    <wsdl:part name="parameters" element="tns:registerTrip" />
+  </wsdl:message>
+  <wsdl:message name="findByPromoterAndOpenResponse">
+    <wsdl:part name="parameters" element="tns:findByPromoterAndOpenResponse" />
+  </wsdl:message>
+  <wsdl:message name="viajesPendientes">
+    <wsdl:part name="parameters" element="tns:viajesPendientes" />
+  </wsdl:message>
+  <wsdl:message name="findAllUserTrip">
+    <wsdl:part name="parameters" element="tns:findAllUserTrip" />
+  </wsdl:message>
+  <wsdl:message name="findPromoterOrParticipated">
+    <wsdl:part name="parameters" element="tns:findPromoterOrParticipated" />
+  </wsdl:message>
+  <wsdl:message name="findToClose">
+    <wsdl:part name="parameters" element="tns:findToClose" />
+  </wsdl:message>
+  <wsdl:message name="updateResponse">
+    <wsdl:part name="parameters" element="tns:updateResponse" />
+  </wsdl:message>
+  <wsdl:message name="findById">
+    <wsdl:part name="parameters" element="tns:findById" />
+  </wsdl:message>
+  <wsdl:message name="findAllUserTripResponse">
+    <wsdl:part name="parameters" element="tns:findAllUserTripResponse" />
+  </wsdl:message>
+  <wsdl:message name="viajesPendientesResponse">
+    <wsdl:part name="parameters" element="tns:viajesPendientesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TripsService">
+    <wsdl:operation name="findPromoterOrParticipated">
+      <wsdl:input name="findPromoterOrParticipated" message="tns:findPromoterOrParticipated" />
+      <wsdl:output name="findPromoterOrParticipatedResponse" message="tns:findPromoterOrParticipatedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findById">
+      <wsdl:input name="findById" message="tns:findById" />
+      <wsdl:output name="findByIdResponse" message="tns:findByIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findByPromoterAndOpen">
+      <wsdl:input name="findByPromoterAndOpen" message="tns:findByPromoterAndOpen" />
+      <wsdl:output name="findByPromoterAndOpenResponse" message="tns:findByPromoterAndOpenResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="registerTrip">
+      <wsdl:input name="registerTrip" message="tns:registerTrip" />
+      <wsdl:output name="registerTripResponse" message="tns:registerTripResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableTrips">
+      <wsdl:input name="getAvailableTrips" message="tns:getAvailableTrips" />
+      <wsdl:output name="getAvailableTripsResponse" message="tns:getAvailableTripsResponse" />
+      <wsdl:fault name="Exception" message="tns:Exception" />
+    </wsdl:operation>
+    <wsdl:operation name="viajesPendientes">
+      <wsdl:input name="viajesPendientes" message="tns:viajesPendientes" />
+      <wsdl:output name="viajesPendientesResponse" message="tns:viajesPendientesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findAllUserTrip">
+      <wsdl:input name="findAllUserTrip" message="tns:findAllUserTrip" />
+      <wsdl:output name="findAllUserTripResponse" message="tns:findAllUserTripResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findToClose">
+      <wsdl:input name="findToClose" message="tns:findToClose" />
+      <wsdl:output name="findToCloseResponse" message="tns:findToCloseResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findByPromoter">
+      <wsdl:input name="findByPromoter" message="tns:findByPromoter" />
+      <wsdl:output name="findByPromoterResponse" message="tns:findByPromoterResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <wsdl:input name="update" message="tns:update" />
+      <wsdl:output name="updateResponse" message="tns:updateResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EjbTripsServiceServiceSoapBinding" type="tns:TripsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="findById">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findById">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findByIdResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPromoterOrParticipated">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findPromoterOrParticipated">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findPromoterOrParticipatedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findByPromoterAndOpen">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findByPromoterAndOpen">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findByPromoterAndOpenResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableTrips">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAvailableTrips">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAvailableTripsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerTrip">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="registerTrip">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="registerTripResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viajesPendientes">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="viajesPendientes">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="viajesPendientesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllUserTrip">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findAllUserTrip">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findAllUserTripResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findToClose">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findToClose">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findToCloseResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findByPromoter">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="findByPromoter">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findByPromoterResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="update">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="update">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EjbTripsServiceService">
+    <wsdl:port name="TripsServicePort" binding="tns:EjbTripsServiceServiceSoapBinding">
+      <soap:address location="http://DESKTOP-PGL18OV:8280/sdi3-10.EJB/TripsService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

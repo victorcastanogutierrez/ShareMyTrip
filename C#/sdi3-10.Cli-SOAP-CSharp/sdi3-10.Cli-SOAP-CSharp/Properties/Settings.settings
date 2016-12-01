@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="sdi3_10.Cli_SOAP_CSharp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="sdi3_10_Cli_SOAP_CSharp_TripsService_EjbTripsServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://DESKTOP-PGL18OV:8280/sdi3-10.EJB/TripsService</Value>
+    </Setting>
+    <Setting Name="sdi3_10_Cli_SOAP_CSharp_SeatsService_EjbSeatsServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://DESKTOP-PGL18OV:8280/sdi3-10.EJB/SeatsService</Value>
+    </Setting>
+    <Setting Name="sdi3_10_Cli_SOAP_CSharp_RatingsService_EjbRatingsServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://DESKTOP-PGL18OV:8280/sdi3-10.EJB/RatingsService</Value>
+    </Setting>
+    <Setting Name="sdi3_10_Cli_SOAP_CSharp_UsersService_EjbUsersServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://DESKTOP-PGL18OV:8280/sdi3-10.EJB/UsersService</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
